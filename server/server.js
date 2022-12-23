@@ -54,14 +54,38 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname, '/build')));
 app.get('/', (req, res) => {
-  const fileDirectory = path.resolve(__dirname, '.', '/build');
+  const pathFile = __dirname + '/build/index.html';
 
-  res.sendFile('index.html', {root: fileDirectory}, (err) => {
+
+  res.sendFile(pathFile, (err) => {
     res.end();
 
     if (err) throw(err);
   });
 });
+
+app.get('/login', (req, res) => {
+  const pathFile = __dirname + '/build/index.html';
+
+
+  res.sendFile(pathFile, (err) => {
+    res.end();
+
+    if (err) throw(err);
+  });
+});
+
+app.get('/admin', (req, res) => {
+  const pathFile = __dirname + '/build/index.html';
+
+
+  res.sendFile(pathFile, (err) => {
+    res.end();
+
+    if (err) throw(err);
+  });
+});
+
 
 app.use(`${API_PREFIX}/`, serviceRoutes);
 app.use(`${API_PREFIX}/`, authRoutes);
